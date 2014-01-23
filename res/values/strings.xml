@@ -12,6 +12,9 @@
     <string name="rename">Rename</string>
     <string name="addCounter">Add Counter</string>
     <string name="zero">0</string>
+    <string name="enterName">Enter a name for your Counter</string>
+    <string name="confirmName">Create</string>
+    <string name="browse">Browse Counters</string>
     
 
 </resources>

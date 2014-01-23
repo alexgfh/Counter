@@ -10,10 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/addCounter" />
 
-    <ListView
-        android:id="@+id/counterList"
+    <Button
+        android:id="@+id/browseCounters"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
+        android:layout_height="wrap_content"
+        android:text="@string/browse" />
 
 </LinearLayout>

@@ -4,14 +4,6 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.05"
-        android:text="@string/back" />
-
-    <Button
         android:id="@+id/rename"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -3,22 +3,38 @@ package ca.ualberta.counter;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Counter {
+/*
+ * Models an individual counter
+ */
+
+public class Counter implements Comparable<Counter> {
 	private ArrayList<Date> counts;
+	private int counterValue;
 	private String name;
 	
 	Counter() {
+		counterValue=0;
 		counts = new ArrayList<Date>();
 	}
 	
+	Counter(String name) {
+		this();
+		this.name=name;
+	}
+	
 	public void count() {
-		counts.add(new Date());		
+		counts.add(new Date());
+		counterValue++;
 	}
 	
 	public int getCounterValue() {
-		return counts.size();
+		return counterValue;
 	}
-
+	
+	public void reset() {
+		counterValue=0;		
+	}
+	
 	public ArrayList<Date> getCounts() {
 		return counts;
 	}
@@ -33,5 +49,15 @@ public class Counter {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public int compareTo(Counter another) {
+		if(this.getCounterValue()<another.getCounterValue())
+			return -1;
+		else if(this.getCounterValue()==another.getCounterValue())
+			return 0;
+		else
+			return 1;
 	}
 }

@@ -21,6 +21,7 @@ public class CounterActivity extends Activity {
 	}
 	
 	protected void onPause() {
+		super.onPause();
 		CounterList.save();
 	}
 	

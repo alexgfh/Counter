@@ -15,6 +15,6 @@
     <string name="enterName">Enter a name for your Counter</string>
     <string name="confirmName">Create</string>
     <string name="browse">Browse Counters</string>
-    
+    <string name="title_activity_statistics">StatisticsActivity</string>
 
 </resources>

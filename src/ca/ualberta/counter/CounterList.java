@@ -6,15 +6,20 @@ public class CounterList {
 	
 	private static final String FILENAME = "file.sav";
 	private static ArrayList<Counter> counters;
+	private static int currentIndex;
+	
+	public static void setCurrentIndex(int index) {
+		currentIndex = index;
+	}
+	
+	public static Counter getCurrentCounter() {
+		return counters.get(currentIndex);
+	}
 	
 	public static void addCounter(String name) {
 		counters.add(new Counter(name));
 	}
 	
-	public static Counter getCounterByIndex(int index) {
-		return counters.get(index);
-	}
-
 	public static ArrayList<Counter> getCounters() {
 		return counters;
 	}
@@ -34,6 +39,6 @@ public class CounterList {
 	}
 	
 	public static void save() {
-		//save in file
+		//save in file.sav
 	}
 }

@@ -8,8 +8,8 @@ import android.widget.EditText;
 
 public class CreateCounterActivity extends Activity {
 	
-	EditText inputName;
-	Button create;
+	private EditText inputName;
+	private Button create;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,8 @@ public class CreateCounterActivity extends Activity {
 			public void onClick(View v) {
 				String name = inputName.getText().toString();
 				CounterList.addCounter(name);
+				CounterList.save();
+				finish();
 			}
 		} );
 	}

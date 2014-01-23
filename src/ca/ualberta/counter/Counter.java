@@ -50,6 +50,10 @@ public class Counter implements Comparable<Counter> {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String toString() {
+		return this.name + this.counterValue;
+	}
 
 	@Override
 	public int compareTo(Counter another) {

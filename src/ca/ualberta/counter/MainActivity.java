@@ -19,7 +19,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		add = (Button) findViewById(R.id.addCounter);
 		browse = (Button) findViewById(R.id.browseCounters);
-		
 		add.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -35,10 +34,8 @@ public class MainActivity extends Activity {
 				startActivity(new Intent("android.intent.action.BROWSE"));
 			}
 		});
-	}
-	
-	protected void OnStart() {
-		CounterList.load();		
+
+		CounterList.load();
 	}
 	
 }

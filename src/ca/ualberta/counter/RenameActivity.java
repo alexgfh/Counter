@@ -7,8 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class RenameActivity extends Activity {
-	EditText inputName;
-	Button create;
+
+	private Button create;
+	private EditText inputName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,9 @@ public class RenameActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				String name = inputName.getText().toString();
-				CounterList.addCounter(name);
+				CounterList.getCurrentCounter().setName(name);
+				CounterList.save();
+				finish();
 			}
 		} );
 	}

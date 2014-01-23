@@ -11,12 +11,7 @@ public class CounterActivity extends Activity {
 	
 	private Button rename, reset, statistics, count;
 	private TextView countDisplay;
-	private Counter counter;
-	private int counterIndex;
 	
-	public void setCounterIndex(int counterIndex) {
-		this.counterIndex = counterIndex;
-	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +20,8 @@ public class CounterActivity extends Activity {
 		setButtons();
 	}
 	
-	protected void OnStart() {
-		counter = CounterList.getCounterByIndex(counterIndex);
+	protected void onPause() {
+		CounterList.save();
 	}
 	
 	private void setButtons() {
@@ -47,8 +42,8 @@ public class CounterActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				counter.reset();
-				countDisplay.setText(Integer.toString(counter.getCounterValue()));
+				CounterList.getCurrentCounter().reset();
+				countDisplay.setText(Integer.toString(CounterList.getCurrentCounter().getCounterValue()));
 			}
 		});
 		statistics.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +57,8 @@ public class CounterActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				counter.count();
-				countDisplay.setText(Integer.toString(counter.getCounterValue()));
+				CounterList.getCurrentCounter().count();
+				countDisplay.setText(Integer.toString(CounterList.getCurrentCounter().getCounterValue()));
 			}
 		});
 	}

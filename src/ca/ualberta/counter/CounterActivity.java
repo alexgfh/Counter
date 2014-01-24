@@ -20,9 +20,10 @@ public class CounterActivity extends Activity {
 		setButtons();
 	}
 	
-	protected void onPause() {
-		super.onPause();
-		CounterList.save();
+	@Override
+	protected void onResume() {
+		super.onResume();
+		countDisplay.setText(Integer.toString(CounterList.getCurrentCounter().getCounterValue()));
 	}
 	
 	private void setButtons() {

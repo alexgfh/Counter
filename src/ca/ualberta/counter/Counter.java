@@ -52,7 +52,7 @@ public class Counter implements Comparable<Counter> {
 	}
 	
 	public String toString() {
-		return this.name + this.counterValue;
+		return this.name + " | " + this.counterValue;
 	}
 
 	@Override

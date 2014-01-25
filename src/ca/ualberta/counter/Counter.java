@@ -15,6 +15,7 @@ public class Counter implements Comparable<Counter> {
 	Counter() {
 		counterValue=0;
 		counts = new ArrayList<Date>();
+		this.name="unnamed";
 	}
 	
 	Counter(String name) {

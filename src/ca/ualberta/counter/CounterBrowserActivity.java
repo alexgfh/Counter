@@ -13,16 +13,19 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class CounterBrowserActivity extends Activity {
-
-	private ListView counterList;
+	
+	public static CounterList counterList;
+	private static Counter activeCounter;
+	private ListView listview;
 	private Button addCounter;
 	ArrayAdapter<Counter> adapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		counterList = new CounterList();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browser_counter);
-		counterList = (ListView) findViewById(R.id.counterList);
+		listview = (ListView) findViewById(R.id.counterList);
 		addCounter = (Button) findViewById(R.id.addCounter);
 		addCounter.setOnClickListener(new View.OnClickListener() {
 			
@@ -31,22 +34,27 @@ public class CounterBrowserActivity extends Activity {
 				startActivity(new Intent("android.intent.action.CREATE"));
 			}
 		});
-	}
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
-		CounterList.load();
-		ArrayList<Counter> counters = CounterList.getCounters();
+		ArrayList<Counter> counters = counterList.getCounters();
 		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counters);
-		counterList.setAdapter(adapter);
-		counterList.setOnItemClickListener(new OnItemClickListener() {
+		listview.setAdapter(adapter);
+		listview.setOnItemClickListener(new OnItemClickListener() {
 			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				CounterList.setCurrentIndex(position);
+				activeCounter = counterList.getCounterAtIndex(position);
 				startActivity(new Intent("android.intent.action.COUNTER"));
 			}
 		});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		counterList.sort();
+		adapter.notifyDataSetChanged();
+	}
+	
+	public static Counter getActiveCounter() {
+			return activeCounter;
 	}
 }

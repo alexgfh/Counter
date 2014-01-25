@@ -23,7 +23,7 @@ public class CounterActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		countDisplay.setText(Integer.toString(CounterList.getCurrentCounter().getCounterValue()));
+		countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
 	}
 	
 	private void setButtons() {
@@ -44,8 +44,8 @@ public class CounterActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				CounterList.getCurrentCounter().reset();
-				countDisplay.setText(Integer.toString(CounterList.getCurrentCounter().getCounterValue()));
+				CounterBrowserActivity.getActiveCounter().reset();
+				countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
 			}
 		});
 		statistics.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +59,8 @@ public class CounterActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				CounterList.getCurrentCounter().count();
-				countDisplay.setText(Integer.toString(CounterList.getCurrentCounter().getCounterValue()));
+				CounterBrowserActivity.getActiveCounter().count();
+				countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
 			}
 		});
 	}

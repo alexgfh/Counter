@@ -1,47 +1,43 @@
 package ca.ualberta.counter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
-import com.google.gson.Gson;
+/*
+ * Models a list of Counters
+ */
 
 public class CounterList {
 	
-	private static final String FILENAME = "file.sav";
-	private static ArrayList<Counter> counters;
-	private static int currentIndex;
+	private ArrayList<Counter> counters;
 	
-	public static void setCurrentIndex(int index) {
-		currentIndex = index;
+	CounterList() {
+		counters = new ArrayList<Counter>();
 	}
 	
-	public static Counter getCurrentCounter() {
-		return counters.get(currentIndex);
+	public Counter getCounterAtIndex(int index) {
+		return counters.get(index);
 	}
 	
-	public static void addCounter(String name) {
+	public void addCounter(String name) {
 		counters.add(new Counter(name));
 	}
 	
-	public static ArrayList<Counter> getCounters() {
+	public ArrayList<Counter> getCounters() {
 		return counters;
 	}
 
-	public static void setCounters(ArrayList<Counter> counters) {
-		CounterList.counters = counters;
+	public void setCounters(ArrayList<Counter> counters) {
+		this.counters = counters;
 	}
 	
-	public static void load() {
-		if(counters==null) {
-			counters = new ArrayList<Counter>();
-		}
-		else {
-			//load from file.sav
-			
-		}
-	}
-	
-	public static void save() {
-		Gson gson=new Gson();
-		//save in file.sav
+	public void sort(){
+		Collections.sort(counters, new Comparator<Counter>() {
+			@Override
+			public int compare(Counter counter1, Counter counter2) {
+				return -counter1.compareTo(counter2); //sort from greater to lesser
+			}
+		});
 	}
 }

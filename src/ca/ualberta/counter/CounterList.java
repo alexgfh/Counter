@@ -2,6 +2,8 @@ package ca.ualberta.counter;
 
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+
 public class CounterList {
 	
 	private static final String FILENAME = "file.sav";
@@ -39,6 +41,7 @@ public class CounterList {
 	}
 	
 	public static void save() {
+		Gson gson=new Gson();
 		//save in file.sav
 	}
 }

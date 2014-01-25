@@ -16,6 +16,7 @@ public class CounterBrowserActivity extends Activity {
 
 	private ListView counterList;
 	private Button addCounter;
+	ArrayAdapter<Counter> adapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class CounterBrowserActivity extends Activity {
 		super.onStart();
 		CounterList.load();
 		ArrayList<Counter> counters = CounterList.getCounters();
-		ArrayAdapter<Counter> adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counters);
+		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counters);
 		counterList.setAdapter(adapter);
 		counterList.setOnItemClickListener(new OnItemClickListener() {
 			
@@ -48,5 +49,4 @@ public class CounterBrowserActivity extends Activity {
 			}
 		});
 	}
-
 }

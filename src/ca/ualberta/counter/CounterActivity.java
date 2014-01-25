@@ -46,6 +46,7 @@ public class CounterActivity extends Activity {
 			public void onClick(View v) {
 				CounterBrowserActivity.getActiveCounter().reset();
 				countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
+				CounterBrowserActivity.save();
 			}
 		});
 		statistics.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +62,7 @@ public class CounterActivity extends Activity {
 			public void onClick(View v) {
 				CounterBrowserActivity.getActiveCounter().count();
 				countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
+				CounterBrowserActivity.save();
 			}
 		});
 	}

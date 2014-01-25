@@ -22,7 +22,6 @@ public class CounterBrowserActivity extends Activity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		counterList = new CounterList();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browser_counter);
 		listview = (ListView) findViewById(R.id.counterList);
@@ -34,6 +33,8 @@ public class CounterBrowserActivity extends Activity {
 				startActivity(new Intent("android.intent.action.CREATE"));
 			}
 		});
+		counterList = new CounterList();
+		load();
 		ArrayList<Counter> counters = counterList.getCounters();
 		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counters);
 		listview.setAdapter(adapter);
@@ -56,5 +57,13 @@ public class CounterBrowserActivity extends Activity {
 	
 	public static Counter getActiveCounter() {
 			return activeCounter;
+	}
+	
+	public static void save() {
+		
+	}
+	
+	private static void load() {
+		
 	}
 }

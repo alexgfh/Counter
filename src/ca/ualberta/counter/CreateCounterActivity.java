@@ -23,6 +23,7 @@ public class CreateCounterActivity extends Activity {
 			public void onClick(View v) {
 				String name = inputName.getText().toString();
 				CounterBrowserActivity.counterList.addCounter(name);
+				CounterBrowserActivity.save();
 				finish();
 			}
 		} );

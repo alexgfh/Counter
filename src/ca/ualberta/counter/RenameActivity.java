@@ -23,6 +23,7 @@ public class RenameActivity extends Activity {
 			public void onClick(View v) {
 				String name = inputName.getText().toString();
 				CounterBrowserActivity.getActiveCounter().setName(name);
+				CounterBrowserActivity.save();
 				finish();
 			}
 		} );

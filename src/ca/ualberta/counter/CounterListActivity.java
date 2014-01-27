@@ -9,7 +9,16 @@ import java.io.ObjectOutputStream;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+
+/*
+ * Superclass of all activities of the app, provides
+ * access to the Counter List, and resources for saving.
+ * The rationale for this was that any Activity has access
+ * to the List and can tell it to load and save, with no need to
+ * provide input and output.
+ * This class extends Activity because in Android, a context
+ * is needed to deal with files.
+ */
 
 public class CounterListActivity extends Activity {
 	
@@ -31,12 +40,12 @@ public class CounterListActivity extends Activity {
 	protected final void loadCounterList() {
 		CounterList counterList = null;
 		try {
-			FileInputStream fis = openFileInput(getFileName());
+			FileInputStream fis = openFileInput(FILENAME);
 			ObjectInputStream is = new ObjectInputStream(fis);
 			counterList = (CounterList) is.readObject();
 			is.close();
 		} catch(FileNotFoundException e) {
-			Log.v("mine","Creating new CounterList\n");
+			android.util.Log.i("main", "Creating new CounterList");
 			counterList = new CounterList();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -61,9 +70,5 @@ public class CounterListActivity extends Activity {
 	protected static final CounterList getCounterList(){
 		return counterList;
 	}
-	
-	protected static final String getFileName() {
-		return FILENAME;
-	}	
 	
 }

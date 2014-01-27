@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /*
- * Models an individual counter
+ * Models an individual counter.
  */
 
 public class Counter implements Comparable<Counter>, Serializable {

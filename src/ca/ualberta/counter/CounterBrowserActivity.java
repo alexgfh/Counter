@@ -11,6 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+/*
+ * The main activity.
+ * Provides a list of all counters, 
+ * ordered by counts, and also provides
+ * a button that permits creating a new counter.
+ */
+
 public class CounterBrowserActivity extends CounterListActivity {
 	
 	private ListView listview;

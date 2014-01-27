@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Counter</string>
+    <string name="app_name">gonalves-notes</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="count">Count!</string>
@@ -13,8 +13,8 @@
     <string name="addCounter">Add Counter</string>
     <string name="zero">0</string>
     <string name="enterName">Enter a name for your Counter</string>
-    <string name="confirmName">Create</string>
+    <string name="confirmName">Confirm</string>
     <string name="browse">Browse Counters</string>
-    <string name="title_activity_statistics">StatisticsActivity</string>
+    <string name="delete">Delete this Counter</string>
 
 </resources>

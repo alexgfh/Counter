@@ -2,7 +2,6 @@ package ca.ualberta.counter;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class CounterBrowserActivity extends Activity {
+public class CounterBrowserActivity extends CounterListActivity {
 	
-	public static CounterList counterList;
-	private static Counter activeCounter;
 	private ListView listview;
 	private Button addCounter;
 	ArrayAdapter<Counter> adapter;
@@ -33,16 +30,15 @@ public class CounterBrowserActivity extends Activity {
 				startActivity(new Intent("android.intent.action.CREATE"));
 			}
 		});
-		counterList = new CounterList();
-		load();
-		ArrayList<Counter> counters = counterList.getCounters();
+		loadCounterList();
+		ArrayList<Counter> counters = getCounterList().getCounters();
 		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counters);
 		listview.setAdapter(adapter);
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				activeCounter = counterList.getCounterAtIndex(position);
+				setActiveCounter(position);
 				startActivity(new Intent("android.intent.action.COUNTER"));
 			}
 		});
@@ -51,19 +47,7 @@ public class CounterBrowserActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		counterList.sort();
+		getCounterList().sort();
 		adapter.notifyDataSetChanged();
-	}
-	
-	public static Counter getActiveCounter() {
-			return activeCounter;
-	}
-	
-	public static void save() {
-		
-	}
-	
-	private static void load() {
-		
 	}
 }

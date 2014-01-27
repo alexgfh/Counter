@@ -1,5 +1,6 @@
 package ca.ualberta.counter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,8 +9,9 @@ import java.util.Comparator;
  * Models a list of Counters
  */
 
-public class CounterList {
+public class CounterList implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Counter> counters;
 	
 	CounterList() {
@@ -24,12 +26,12 @@ public class CounterList {
 		counters.add(new Counter(name));
 	}
 	
+	public void removeCounter(int index) {
+		counters.remove(index);
+	}
+	
 	public ArrayList<Counter> getCounters() {
 		return counters;
-	}
-
-	public void setCounters(ArrayList<Counter> counters) {
-		this.counters = counters;
 	}
 	
 	public void sort(){

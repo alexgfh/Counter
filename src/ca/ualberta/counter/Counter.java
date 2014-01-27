@@ -1,5 +1,6 @@
 package ca.ualberta.counter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,7 +8,9 @@ import java.util.Date;
  * Models an individual counter
  */
 
-public class Counter implements Comparable<Counter> {
+public class Counter implements Comparable<Counter>, Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Date> counts;
 	private int counterValue;
 	private String name;
@@ -52,8 +55,9 @@ public class Counter implements Comparable<Counter> {
 		this.name = name;
 	}
 	
+	@Override
 	public String toString() {
-		return this.name + " | " + this.counterValue;
+		return this.name + " -- " + this.counterValue;
 	}
 
 	@Override

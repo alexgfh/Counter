@@ -1,12 +1,11 @@
 package ca.ualberta.counter;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CreateCounterActivity extends Activity {
+public class CreateCounterActivity extends CounterListActivity {
 	
 	private EditText inputName;
 	private Button create;
@@ -22,8 +21,8 @@ public class CreateCounterActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				String name = inputName.getText().toString();
-				CounterBrowserActivity.counterList.addCounter(name);
-				CounterBrowserActivity.save();
+				getCounterList().addCounter(name);
+				saveCounterList();
 				finish();
 			}
 		} );

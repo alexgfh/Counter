@@ -1,15 +1,14 @@
 package ca.ualberta.counter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CounterActivity extends Activity {
+public class CounterActivity extends CounterListActivity {
 	
-	private Button rename, reset, statistics, count;
+	private Button rename, reset, delete, statistics, count;
 	private TextView countDisplay;
 	
 	
@@ -23,16 +22,16 @@ public class CounterActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
+		countDisplay.setText(Integer.toString(getActiveCounter().getCounterValue()));
 	}
 	
 	private void setButtons() {
 		rename = (Button) findViewById(R.id.rename);
 		reset = (Button) findViewById(R.id.reset);
+		delete =  (Button) findViewById(R.id.delete);
 		statistics = (Button) findViewById(R.id.statistics);
 		count = (Button) findViewById(R.id.count);
 		countDisplay = (TextView) findViewById(R.id.countDisplay);
-		
 		rename.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -44,9 +43,18 @@ public class CounterActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				CounterBrowserActivity.getActiveCounter().reset();
-				countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
-				CounterBrowserActivity.save();
+				getActiveCounter().reset();
+				countDisplay.setText(Integer.toString(getActiveCounter().getCounterValue()));
+				saveCounterList();
+			}
+		});
+		delete.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				removeActiveCounter();
+				saveCounterList();
+				finish();
 			}
 		});
 		statistics.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +68,9 @@ public class CounterActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				CounterBrowserActivity.getActiveCounter().count();
-				countDisplay.setText(Integer.toString(CounterBrowserActivity.getActiveCounter().getCounterValue()));
-				CounterBrowserActivity.save();
+				getActiveCounter().count();
+				countDisplay.setText(Integer.toString(getActiveCounter().getCounterValue()));
+				saveCounterList();
 			}
 		});
 	}

@@ -20,6 +20,13 @@
         android:text="@string/reset" />
 
     <Button
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:text="@string/delete" />
+
+    <Button
         android:id="@+id/statistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -19,6 +19,8 @@ public class StatisticsActivity extends CounterListActivity {
 
 	private ListView listView;
 	private Button hours, days, weeks, months;
+	private ArrayList<String> stats;
+	private ArrayAdapter<String> adapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,47 +31,43 @@ public class StatisticsActivity extends CounterListActivity {
 		days = (Button) findViewById(R.id.buttonDays);
 		weeks = (Button) findViewById(R.id.buttonWeeks);
 		months = (Button) findViewById(R.id.buttonMonths);
+		stats = new ArrayList<String>(); //start with empty list
+		adapter = new ArrayAdapter<String>(StatisticsActivity.this, android.R.layout.simple_list_item_1, stats);
+		listView.setAdapter(adapter);
 		hours.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ArrayList<String> stats = getActiveCounter().getStatisticsByHour();
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(StatisticsActivity.this, android.R.layout.simple_list_item_1, stats);
-				listView.setAdapter(adapter);
+				stats.clear();
+				stats.addAll(getActiveCounter().getStatisticsByHour());
+				adapter.notifyDataSetChanged();
 			}
 		});
 		
 		days.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ArrayList<String> stats = getActiveCounter().getStatisticsByDay();
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(StatisticsActivity.this, android.R.layout.simple_list_item_1, stats);
-				listView.setAdapter(adapter);
+				stats.clear();
+				stats.addAll(getActiveCounter().getStatisticsByDay());
+				adapter.notifyDataSetChanged();
 			}
 		});
 		
 		weeks.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ArrayList<String> stats = getActiveCounter().getStatisticsByWeek();
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(StatisticsActivity.this, android.R.layout.simple_list_item_1, stats);
-				listView.setAdapter(adapter);
+				stats.clear();
+				stats.addAll(getActiveCounter().getStatisticsByWeek());
+				adapter.notifyDataSetChanged();
 			}
 		});
 		
 		months.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ArrayList<String> stats = getActiveCounter().getStatisticsByMonth();
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(StatisticsActivity.this, android.R.layout.simple_list_item_1, stats);
-				listView.setAdapter(adapter);
+				stats.clear();
+				stats.addAll(getActiveCounter().getStatisticsByMonth());
+				adapter.notifyDataSetChanged();
 			}
 		});
 	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-	}
-
 }

@@ -6,10 +6,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /*
- * Models a list of Counters
+ * Models a list of Counters, an ArrayList composes this class
  */
 
-public class CounterList implements Serializable {
+class CounterList implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Counter> counters;

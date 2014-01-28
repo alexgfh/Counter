@@ -16,21 +16,10 @@ public class CounterActivity extends CounterListActivity {
 	private Button rename, reset, delete, statistics, count;
 	private TextView countDisplay;
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counter);
-		setButtons();
-	}
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		countDisplay.setText(Integer.toString(getActiveCounter().getCounterValue()));
-	}
-	
-	private void setButtons() {
 		rename = (Button) findViewById(R.id.rename);
 		reset = (Button) findViewById(R.id.reset);
 		delete =  (Button) findViewById(R.id.delete);
@@ -79,4 +68,11 @@ public class CounterActivity extends CounterListActivity {
 			}
 		});
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		countDisplay.setText(Integer.toString(getActiveCounter().getCounterValue()));
+	}
+	
 }

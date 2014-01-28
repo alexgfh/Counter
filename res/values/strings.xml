@@ -11,10 +11,13 @@
     <string name="value">0</string>
     <string name="rename">Rename</string>
     <string name="addCounter">Add Counter</string>
-    <string name="zero">0</string>
     <string name="enterName">Enter a name for your Counter</string>
     <string name="confirmName">Confirm</string>
     <string name="browse">Browse Counters</string>
     <string name="delete">Delete this Counter</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="weeks">Weeks</string>
+    <string name="months">Months</string>
 
 </resources>

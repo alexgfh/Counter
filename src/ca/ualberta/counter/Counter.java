@@ -2,7 +2,9 @@ package ca.ualberta.counter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
 
 /*
  * Models an individual counter.
@@ -11,39 +13,34 @@ import java.util.Date;
 public class Counter implements Comparable<Counter>, Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Date> counts;
+	private ArrayList<Calendar> counts;
 	private int counterValue;
 	private String name;
-	
-	Counter() {
-		counterValue=0;
-		counts = new ArrayList<Date>();
-		this.name="unnamed";
-	}
-	
+
 	Counter(String name) {
-		this();
-		this.name=name;
+		counterValue=0;
+		this.name = name;
+		counts = new ArrayList<Calendar>();
 	}
-	
+
 	public void count() {
-		counts.add(new Date());
+		counts.add(Calendar.getInstance());
 		counterValue++;
 	}
-	
+
 	public int getCounterValue() {
 		return counterValue;
 	}
-	
+
 	public void reset() {
-		counterValue=0;		
+		counterValue = 0;
 	}
-	
-	public ArrayList<Date> getCounts() {
+
+	public ArrayList<Calendar> getCounts() {
 		return counts;
 	}
 
-	public void setCounts(ArrayList<Date> countDates) {
+	public void setCounts(ArrayList<Calendar> countDates) {
 		this.counts = countDates;
 	}
 
@@ -54,7 +51,88 @@ public class Counter implements Comparable<Counter>, Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public ArrayList<String> getStatisticsByHour() {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		for(Calendar cal : counts) {
+			String key = cal.get(Calendar.YEAR) + " " + 
+					cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()) + " " +
+					cal.get(Calendar.DAY_OF_MONTH) + " " +
+					cal.get(Calendar.HOUR_OF_DAY) + ":00";
+			if(map.containsKey(key)) {
+				map.put(key, map.get(key)+1);
+			}
+			else {
+				map.put(key, 1);
+			}
+		}
+		ArrayList<String> stats = new ArrayList<String>();
+		for(String key : map.keySet()) {
+			stats.add(key + " -- " + map.get(key));
+		}
+		return stats;
+	}
+
+	public ArrayList<String> getStatisticsByDay() {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		for(Calendar cal : counts) {
+			String key = cal.get(Calendar.YEAR) + " " + 
+					cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()) + " " +
+					cal.get(Calendar.DAY_OF_MONTH);
+			if(map.containsKey(key)) {
+				map.put(key, map.get(key)+1);
+			}
+			else {
+				map.put(key, 1);
+			}
+		}
+		ArrayList<String> stats = new ArrayList<String>();
+		for(String key : map.keySet()) {
+			stats.add(key + " -- " + map.get(key));
+		}
+		return stats;
+	}
+
+	public ArrayList<String> getStatisticsByWeek() {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		for(Calendar cal : counts) {
+			String key = cal.get(Calendar.YEAR) + " " + 
+					cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault())
+					+ " Week " +
+					cal.get(Calendar.WEEK_OF_MONTH);
+			if(map.containsKey(key)) {
+				map.put(key, map.get(key)+1);
+			}
+			else {
+				map.put(key, 1);
+			}
+		}
+		ArrayList<String> stats = new ArrayList<String>();
+		for(String key : map.keySet()) {
+			stats.add(key + " -- " + map.get(key));
+		}
+		return stats;
+	}
+
+	public ArrayList<String> getStatisticsByMonth() {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		for(Calendar cal : counts) {
+			String key = cal.get(Calendar.YEAR) + " " + 
+					cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault());
+			if(map.containsKey(key)) {
+				map.put(key, map.get(key)+1);
+			}
+			else {
+				map.put(key, 1);
+			}
+		}
+		ArrayList<String> stats = new ArrayList<String>();
+		for(String key : map.keySet()) {
+			stats.add(key + " -- " + map.get(key));
+		}
+		return stats;
+	}
+
 	@Override
 	public String toString() {
 		return this.name + " -- " + this.counterValue;
@@ -62,9 +140,9 @@ public class Counter implements Comparable<Counter>, Serializable {
 
 	@Override
 	public int compareTo(Counter another) {
-		if(this.getCounterValue()<another.getCounterValue())
+		if (this.getCounterValue() < another.getCounterValue())
 			return -1;
-		else if(this.getCounterValue()==another.getCounterValue())
+		else if (this.getCounterValue() == another.getCounterValue())
 			return 0;
 		else
 			return 1;

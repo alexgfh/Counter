@@ -45,7 +45,7 @@ public class CounterListActivity extends Activity {
 			counterList = (CounterList) is.readObject();
 			is.close();
 		} catch(FileNotFoundException e) {
-			android.util.Log.i("main", "Creating new CounterList");
+			android.util.Log.i("main", "No file, creating new CounterList");
 			counterList = new CounterList();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

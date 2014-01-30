@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-/*
+/**
  * Activity in which a single counter is browsed.
  * Provides access to all resources of the Counter.
  */

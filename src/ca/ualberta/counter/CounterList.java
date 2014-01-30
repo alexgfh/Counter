@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-/*
+/**
  * Models a list of Counters, an ArrayList composes this class
  */
 
@@ -14,7 +14,7 @@ class CounterList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Counter> counters;
 	
-	CounterList() {
+	public CounterList() {
 		counters = new ArrayList<Counter>();
 	}
 	
@@ -38,7 +38,7 @@ class CounterList implements Serializable {
 		Collections.sort(counters, new Comparator<Counter>() {
 			@Override
 			public int compare(Counter counter1, Counter counter2) {
-				return -counter1.compareTo(counter2); //sort from greater to lesser
+				return -counter1.compareTo(counter2); //Negated so it sorts from greater to lesser.
 			}
 		});
 	}

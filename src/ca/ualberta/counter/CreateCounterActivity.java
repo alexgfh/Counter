@@ -5,15 +5,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-/*
+/**
  * Activity in which a Counter can be created.
  * Uses the same GUI layout of Rename.
  */
 
 public class CreateCounterActivity extends CounterListActivity {
 	
-	private EditText inputName;
 	private Button create;
+	private EditText inputName;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

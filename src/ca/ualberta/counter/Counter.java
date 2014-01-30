@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 
-/*
+/**
  * Models an individual counter.
  */
 
@@ -17,7 +17,7 @@ public class Counter implements Comparable<Counter>, Serializable {
 	private int counterValue;
 	private String name;
 
-	Counter(String name) {
+	public Counter(String name) {
 		counterValue=0;
 		this.name = name;
 		counts = new ArrayList<Calendar>();
@@ -36,22 +36,18 @@ public class Counter implements Comparable<Counter>, Serializable {
 		counterValue = 0;
 	}
 
-	public ArrayList<Calendar> getCounts() {
-		return counts;
-	}
-
-	public void setCounts(ArrayList<Calendar> countDates) {
-		this.counts = countDates;
-	}
-
-	public String getName() {
-		return name;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	/*
+	 * Each of the following four methods returns an ArrayList with the
+	 * statistics to be printed.
+	 * First a HashMap is filled with keys, which are Strings that represents
+	 * the Date for that format, with values that are the counts of that Date.
+	 * Then, an ArrayList is filled with each String followed by it's count.
+	 */
+	
 	public ArrayList<String> getStatisticsByHour() {
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		for(Calendar cal : counts) {
@@ -133,11 +129,13 @@ public class Counter implements Comparable<Counter>, Serializable {
 		return stats;
 	}
 
+	//This is the String printed in the CounterBrowserActivity List.
 	@Override
 	public String toString() {
 		return this.name + " -- " + this.counterValue;
 	}
 
+	//Used for sorting.
 	@Override
 	public int compareTo(Counter another) {
 		if (this.getCounterValue() < another.getCounterValue())

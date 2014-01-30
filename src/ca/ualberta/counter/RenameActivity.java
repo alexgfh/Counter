@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-/*
- * Activity in which a Counter can be created.
+/**
+ * Activity in which a Counter can be renamed.
  * Uses the same GUI layout of CreateCounter.
  */
 

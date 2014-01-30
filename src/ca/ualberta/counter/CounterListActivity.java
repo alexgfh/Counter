@@ -10,13 +10,13 @@ import java.io.ObjectOutputStream;
 import android.app.Activity;
 import android.content.Context;
 
-/*
- * Superclass of all activities of the app, provides
+/**
+ * Superclass of all activities of the application, provides
  * access to the Counter List, and resources for saving.
  * The rationale for this was that any Activity has access
  * to the List and can tell it to load and save, with no need to
  * provide input and output.
- * This class extends Activity because in Android, a context
+ * Also, this was necessary because in Android, a context
  * is needed to deal with files.
  */
 
@@ -55,6 +55,11 @@ public class CounterListActivity extends Activity {
 		CounterListActivity.counterList=counterList;
 	}
 	
+	/*
+	 * The Active Counter can be get and set,
+	 * through this, activities can know
+	 * which counter to read and manipulate.
+	 */
 	protected static final Counter getActiveCounter() {
 		return counterList.getCounterAtIndex(activeCounterIndex);
 	}

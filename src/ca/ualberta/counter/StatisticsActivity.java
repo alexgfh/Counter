@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-/*
+/**
  * Show summary of counts by time.
  * In the same activity are given buttons
  * for choosing how to summarize the statistics,

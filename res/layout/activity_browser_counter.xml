@@ -4,12 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/addCounter"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/addCounter" />
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/newCounterName"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/newName" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/addCounter"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:text="@string/addCounter" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/counterList"

@@ -9,35 +9,35 @@ import java.util.Comparator;
  * Models a list of Counters, an ArrayList composes this class
  */
 
-class CounterList implements Serializable {
+class CounterListModel implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Counter> counters;
+	private ArrayList<CounterModel> counters;
 	
-	public CounterList() {
-		counters = new ArrayList<Counter>();
+	public CounterListModel() {
+		counters = new ArrayList<CounterModel>();
 	}
 	
-	public Counter getCounterAtIndex(int index) {
+	public CounterModel getCounterAtIndex(int index) {
 		return counters.get(index);
 	}
 	
 	public void addCounter(String name) {
-		counters.add(new Counter(name));
+		counters.add(new CounterModel(name));
 	}
 	
 	public void removeCounter(int index) {
 		counters.remove(index);
 	}
 	
-	public ArrayList<Counter> getCounters() {
+	public ArrayList<CounterModel> getCounters() {
 		return counters;
 	}
 	
 	public void sort(){
-		Collections.sort(counters, new Comparator<Counter>() {
+		Collections.sort(counters, new Comparator<CounterModel>() {
 			@Override
-			public int compare(Counter counter1, Counter counter2) {
+			public int compare(CounterModel counter1, CounterModel counter2) {
 				return -counter1.compareTo(counter2); //Negated so it sorts from greater to lesser.
 			}
 		});

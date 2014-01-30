@@ -20,6 +20,7 @@ public class CounterActivity extends CounterListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counter);
+		getActionBar().setTitle(getActiveCounter().getName());
 		rename = (Button) findViewById(R.id.rename);
 		reset = (Button) findViewById(R.id.reset);
 		delete =  (Button) findViewById(R.id.delete);

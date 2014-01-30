@@ -26,6 +26,7 @@ public class StatisticsActivity extends CounterListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_statistics);
+		getActionBar().setTitle(getActiveCounter().getName() + " Statistics");
 		listView = (ListView) findViewById(R.id.statisticsListView);
 		hours = (Button) findViewById(R.id.buttonHours);
 		days = (Button) findViewById(R.id.buttonDays);

@@ -9,36 +9,45 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 /**
  * The main activity.
  * Provides a list of all counters, 
- * ordered by counts, and also provides
- * a button that permits creating a new counter.
+ * ordered by counts, and also permits
+ * creating a new counter.
  */
 
 public class CounterBrowserActivity extends CounterListActivity {
+	
 	private ListView listView;
 	private Button addCounter;
-	ArrayAdapter<Counter> adapter;
+	private EditText inputName;
+	ArrayAdapter<CounterModel> adapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browser_counter);
+		getActionBar().setTitle("Counter List");
 		listView = (ListView) findViewById(R.id.counterList);
 		addCounter = (Button) findViewById(R.id.addCounter);
+		inputName = (EditText) findViewById(R.id.newCounterName);
 		addCounter.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent("android.intent.action.CREATE"));
+				String name = inputName.getText().toString();
+				getCounterList().addCounter(name);
+				saveCounterList();
+				adapter.notifyDataSetChanged();
+				inputName.setText("");
 			}
 		});
 		loadCounterList();
-		ArrayList<Counter> counters = getCounterList().getCounters();
-		adapter = new ArrayAdapter<Counter>(this, android.R.layout.simple_list_item_1, counters);
+		ArrayList<CounterModel> counters = getCounterList().getCounters();
+		adapter = new ArrayAdapter<CounterModel>(this, android.R.layout.simple_list_item_1, counters);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			

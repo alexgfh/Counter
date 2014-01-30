@@ -17,5 +17,6 @@
     <string name="hours">Hours</string>
     <string name="weeks">Weeks</string>
     <string name="months">Months</string>
+    <string name="newName">Enter a name for a new Counter</string>
 
 </resources>

@@ -10,14 +10,14 @@ import java.util.Locale;
  * Models an individual counter.
  */
 
-public class Counter implements Comparable<Counter>, Serializable {
+public class CounterModel implements Comparable<CounterModel>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Calendar> counts;
 	private int counterValue;
 	private String name;
 
-	public Counter(String name) {
+	public CounterModel(String name) {
 		counterValue=0;
 		this.name = name;
 		counts = new ArrayList<Calendar>();
@@ -38,6 +38,10 @@ public class Counter implements Comparable<Counter>, Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	/*
@@ -137,7 +141,7 @@ public class Counter implements Comparable<Counter>, Serializable {
 
 	//Used for sorting.
 	@Override
-	public int compareTo(Counter another) {
+	public int compareTo(CounterModel another) {
 		if (this.getCounterValue() < another.getCounterValue())
 			return -1;
 		else if (this.getCounterValue() == another.getCounterValue())
@@ -145,4 +149,5 @@ public class Counter implements Comparable<Counter>, Serializable {
 		else
 			return 1;
 	}
+
 }

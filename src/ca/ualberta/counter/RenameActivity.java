@@ -18,9 +18,11 @@ public class RenameActivity extends CounterListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_name_counter);
+		setContentView(R.layout.activity_rename_counter);
+		getActionBar().setTitle(getActiveCounter().getName());
 		inputName = (EditText) findViewById(R.id.inputName);
 		create = (Button) findViewById(R.id.confirmName);
+		inputName.setHint(getActiveCounter().getName());
 		create.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

@@ -22,7 +22,7 @@ import android.content.Context;
 
 public class CounterListActivity extends Activity {
 	
-	private static CounterList counterList;
+	private static CounterListModel counterList;
 	private static int activeCounterIndex;
 	private static final String FILENAME = "file.sav";
 	
@@ -38,15 +38,15 @@ public class CounterListActivity extends Activity {
 	}
 	
 	protected final void loadCounterList() {
-		CounterList counterList = null;
+		CounterListModel counterList = null;
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
 			ObjectInputStream is = new ObjectInputStream(fis);
-			counterList = (CounterList) is.readObject();
+			counterList = (CounterListModel) is.readObject();
 			is.close();
 		} catch(FileNotFoundException e) {
 			android.util.Log.i("main", "No file, creating new CounterList");
-			counterList = new CounterList();
+			counterList = new CounterListModel();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -60,7 +60,7 @@ public class CounterListActivity extends Activity {
 	 * through this, activities can know
 	 * which counter to read and manipulate.
 	 */
-	protected static final Counter getActiveCounter() {
+	protected static final CounterModel getActiveCounter() {
 		return counterList.getCounterAtIndex(activeCounterIndex);
 	}
 	
@@ -72,7 +72,7 @@ public class CounterListActivity extends Activity {
 		counterList.removeCounter(activeCounterIndex);
 	}
 	
-	protected static final CounterList getCounterList(){
+	protected static final CounterListModel getCounterList(){
 		return counterList;
 	}
 	

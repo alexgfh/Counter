@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/rename_action"
+        android:title="@string/rename"/>
+    <item
+        android:id="@+id/reset_action"
+        android:title="@string/reset"/>
+    <item
+        android:id="@+id/delete_action"
+        android:title="@string/delete"/>
+    <item
+        android:id="@+id/statistics_action"
+        android:title="@string/statistics"/>
+
+</menu>

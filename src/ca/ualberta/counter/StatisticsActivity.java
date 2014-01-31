@@ -10,9 +10,9 @@ import android.widget.ListView;
 
 /**
  * Show summary of counts by time.
- * In the same activity are given buttons
- * for choosing how to summarize the statistics,
- * changing the list when the button is clicked.
+ * Four buttons are given for
+ * choosing how to summarize the statistics,
+ * changing the list when a button is clicked.
  */
 
 public class StatisticsActivity extends CounterListActivity {

@@ -21,6 +21,7 @@ public class CounterActivity extends CounterListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counter);
+		getActionBar().setDisplayHomeAsUpEnabled (true);
 		count = (Button) findViewById(R.id.count);
 		count.setOnClickListener(new View.OnClickListener() {
 			
@@ -40,6 +41,7 @@ public class CounterActivity extends CounterListActivity {
 	    return super.onCreateOptionsMenu(menu);
 	}
 	
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
         case R.id.rename_action:
@@ -58,6 +60,9 @@ public class CounterActivity extends CounterListActivity {
         case R.id.statistics_action:
 			startActivity(new Intent("android.intent.action.STATISTICS"));
             return true;
+        //Makes ActionBar back button behave as physical back button
+        case android.R.id.home:
+            onBackPressed();
         default:
             return super.onOptionsItemSelected(item);
 		}

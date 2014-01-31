@@ -3,6 +3,7 @@ package ca.ualberta.counter;
 import java.util.ArrayList;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class StatisticsActivity extends CounterListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_statistics);
+		getActionBar().setDisplayHomeAsUpEnabled (true);
 		listView = (ListView) findViewById(R.id.statisticsListView);
 		hours = (Button) findViewById(R.id.buttonHours);
 		days = (Button) findViewById(R.id.buttonDays);
@@ -76,4 +78,16 @@ public class StatisticsActivity extends CounterListActivity {
 		super.onResume();
 		getActionBar().setTitle(getActiveCounter().getName() + " Statistics");
 	}
+	
+	//Makes ActionBar back button behave as physical back button
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+        	onBackPressed();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 }

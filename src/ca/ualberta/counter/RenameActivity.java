@@ -1,6 +1,7 @@
 package ca.ualberta.counter;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ public class RenameActivity extends CounterListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rename_counter);
 		getActionBar().setTitle(getActiveCounter().getName());
+		getActionBar().setDisplayHomeAsUpEnabled (true);
 		inputName = (EditText) findViewById(R.id.inputName);
 		create = (Button) findViewById(R.id.confirmName);
 		inputName.setHint(getActiveCounter().getName());
@@ -33,4 +35,16 @@ public class RenameActivity extends CounterListActivity {
 			}
 		} );
 	}
+	
+	//Makes ActionBar back button behave as physical back button
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+        	onBackPressed();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 }

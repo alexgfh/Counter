@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -30,6 +31,7 @@ public class CounterBrowserActivity extends CounterListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browser_counter);
+		getActionBar().setDisplayHomeAsUpEnabled (true);
 		listView = (ListView) findViewById(R.id.counterList);
 		addCounter = (Button) findViewById(R.id.addCounter);
 		inputName = (EditText) findViewById(R.id.newCounterName);
@@ -67,4 +69,17 @@ public class CounterBrowserActivity extends CounterListActivity {
 		adapter.notifyDataSetChanged();
 		getActionBar().setTitle("Counter List");
 	}
+	
+	//Makes ActionBar back button behave as physical back button
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            onBackPressed();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
+	
 }

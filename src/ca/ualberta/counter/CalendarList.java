@@ -1,5 +1,6 @@
 package ca.ualberta.counter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -10,7 +11,9 @@ import java.util.Locale;
  * functions that provides statistics by time periods.
  */
 
-public class CalendarList {
+public class CalendarList implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Calendar> calendarList;
 
 	public CalendarList() {

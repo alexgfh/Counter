@@ -21,7 +21,6 @@ public class CounterActivity extends CounterListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counter);
-		getActionBar().setTitle(getActiveCounter().getName());
 		count = (Button) findViewById(R.id.count);
 		count.setOnClickListener(new View.OnClickListener() {
 			
@@ -69,6 +68,7 @@ public class CounterActivity extends CounterListActivity {
 		super.onResume();
 		if(getActiveCounter().getCounterValue() != 0)
 			count.setText(Integer.toString(getActiveCounter().getCounterValue()));
+		getActionBar().setTitle(getActiveCounter().getName());
 	}
 	
 }

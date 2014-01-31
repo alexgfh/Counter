@@ -30,7 +30,6 @@ public class CounterBrowserActivity extends CounterListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browser_counter);
-		getActionBar().setTitle("Counter List");
 		listView = (ListView) findViewById(R.id.counterList);
 		addCounter = (Button) findViewById(R.id.addCounter);
 		inputName = (EditText) findViewById(R.id.newCounterName);
@@ -39,6 +38,8 @@ public class CounterBrowserActivity extends CounterListActivity {
 			@Override
 			public void onClick(View v) {
 				String name = inputName.getText().toString();
+				//Avoids unnamed Counter, because it's easy to accidentally make them.
+				if(name.isEmpty()) return; 
 				getCounterList().addCounter(name);
 				saveCounterList();
 				adapter.notifyDataSetChanged();
@@ -64,5 +65,6 @@ public class CounterBrowserActivity extends CounterListActivity {
 		super.onResume();
 		getCounterList().sort();
 		adapter.notifyDataSetChanged();
+		getActionBar().setTitle("Counter List");
 	}
 }
